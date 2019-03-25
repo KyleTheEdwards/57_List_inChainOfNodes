@@ -26,11 +26,11 @@ public class List_inChainOfNodes_whilestyle{
     return size;
   }
 
-    
+
      /**
        @return a string representation of this list,
        format:
-           # elements [element0,element1,element2,] 
+           # elements [element0,element1,element2,]
       */
   public String toString() {
     String retString = "[";
@@ -41,8 +41,8 @@ public class List_inChainOfNodes_whilestyle{
     }
     return retString + "]";
   }
-    
-    
+
+
     /**
       Append @value to the head of this list.
 
@@ -52,5 +52,28 @@ public class List_inChainOfNodes_whilestyle{
     Node toAddNode = new Node(val, headReference.getReferenceToNextNode());
     headReference.setReferenceToNextNode(toAddNode);
     return true;
+  }
+
+  public Node get(int element){
+    Node currentNode = headReference.getReferenceToNextNode();
+    for(int x = 0; x < element; x++){
+      currentNode = currentNode.getReferenceToNextNode();
+    }
+
+    return currentNode;
+  }
+
+  public boolean add(Object val, int position){
+    currentNode = get(position);
+    Node newNode = new Node(val, currentNode.getReferenceToNextNode());
+    currentNode.setReferenceToNextNode(newNode);
+    return true;
+  }
+
+  public void remove(int position){
+    Node prevNode = ( (position == 0) ? headReference : get(position-1));
+    Node newNode = get(position);
+
+    prevNode.setReferenceToNextNode(newNode);
   }
 }
