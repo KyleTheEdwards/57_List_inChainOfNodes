@@ -8,7 +8,7 @@ public class List_inChainOfNodes_whilestyle{
     /**
       Construct an empty list
      */
-  public List_inChainOfNodes(){
+  public List_inChainOfNodes_whilestyle(){
     headReference = new Node("Head of list", null);
   }
 
@@ -63,8 +63,13 @@ public class List_inChainOfNodes_whilestyle{
     return currentNode;
   }
 
+  public void set(Object val, int position){
+    Node currentNode = new Node(val, get(position).getReferenceToNextNode());
+    get(position-1).setReferenceToNextNode(currentNode);
+  }
+
   public boolean add(Object val, int position){
-    currentNode = get(position);
+    Node currentNode = get(position);
     Node newNode = new Node(val, currentNode.getReferenceToNextNode());
     currentNode.setReferenceToNextNode(newNode);
     return true;
