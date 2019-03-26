@@ -66,9 +66,12 @@ public class List_inChainOfNodes_whilestyle{
     return getNode(element).getCargoReference();
   }
 
-  public void set(Object val, int position){
-    Node currentNode = new Node(val, getNode(position).getReferenceToNextNode());
-    getNode(position-1).setReferenceToNextNode(currentNode);
+  public Object set(Object val, int position){
+    Node currentNode = getNode(position);
+    Object toReturn = currentNode.getCargoReference();
+    Node newNode = new Node(val, currentNode.getReferenceToNextNode());
+    getNode(position-1).setReferenceToNextNode(newNode);
+    return toReturn;
   }
 
   public boolean add(Object val, int position){

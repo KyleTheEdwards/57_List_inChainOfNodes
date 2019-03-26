@@ -29,7 +29,7 @@ public class UserOfList {
      list.add("d",3);
      System.out.println(list);
 
-     list.set("b",3);
+     System.out.println(list.set("b",3).toString());
      System.out.println(list);
 
      list.remove(3);
