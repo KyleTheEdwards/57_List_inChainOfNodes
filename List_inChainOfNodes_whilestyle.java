@@ -36,7 +36,7 @@ public class List_inChainOfNodes_whilestyle{
     String retString = "[";
     Node currentReference = headReference.getReferenceToNextNode();
     while(currentReference instanceof Node){
-      retString += currentReference.toString() + ", ";
+      retString += currentReference.getCargoReference().toString() + ", ";
       currentReference = currentReference.getReferenceToNextNode();
     }
     return retString + "]";
@@ -62,13 +62,13 @@ public class List_inChainOfNodes_whilestyle{
     return currentNode;
   }
 
-  public Node get(int element){
+  public Object get(int element){
     return getNode(element).getCargoReference();
   }
 
   public void set(Object val, int position){
     Node currentNode = new Node(val, getNode(position).getReferenceToNextNode());
-    get(position-1).setReferenceToNextNode(currentNode);
+    getNode(position-1).setReferenceToNextNode(currentNode);
   }
 
   public boolean add(Object val, int position){
@@ -79,7 +79,7 @@ public class List_inChainOfNodes_whilestyle{
   }
 
   public void remove(int position){
-    Node prevNode = getNode(position-1)
+    Node prevNode = getNode(position-1);
     Node newNode = getNode(position+1);
 
     prevNode.setReferenceToNextNode(newNode);

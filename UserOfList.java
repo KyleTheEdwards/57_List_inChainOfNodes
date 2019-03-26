@@ -3,8 +3,8 @@
  */
 public class UserOfList {
   public static void main( String[] args ) {
-    //List_inChainOfNodes_whilestyle list = new List_inChainOfNodes_whilestyle();
-    List_inChainOfNodes_recursion list = new List_inChainOfNodes_recursion();
+    List_inChainOfNodes_whilestyle list = new List_inChainOfNodes_whilestyle();
+    //List_inChainOfNodes_recursion list = new List_inChainOfNodes_recursion();
 
     System.out.println( "number of elements: " + list.size() );
 
@@ -24,7 +24,16 @@ public class UserOfList {
          list.addAsHead(elem);
          System.out.println( "number of elements: " + list.size() );
      }
-     System.out.println( "populated list: " + list
-                       + System.lineSeparator());
+     System.out.println( "populated list: " + list + System.lineSeparator());
+
+     list.add("d",3);
+     System.out.println(list);
+
+     list.set("b",3);
+     System.out.println(list);
+
+     list.remove(3);
+     System.out.println(list);
+
   }
 }
