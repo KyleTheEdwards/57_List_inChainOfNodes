@@ -49,12 +49,11 @@ public class List_inChainOfNodes_whilestyle{
       @return true, in keeping with conventions yet to be discussed
      */
   public boolean addAsHead( Object val) {
-    Node toAddNode = new Node(val, headReference.getReferenceToNextNode());
-    headReference.setReferenceToNextNode(toAddNode);
-    return true;
+    return add(val, 0);
   }
 
-  public Node get(int element){
+  private Node getNode(int element){
+    if (element < 0) return headReference;
     Node currentNode = headReference.getReferenceToNextNode();
     for(int x = 0; x < element; x++){
       currentNode = currentNode.getReferenceToNextNode();
@@ -63,21 +62,25 @@ public class List_inChainOfNodes_whilestyle{
     return currentNode;
   }
 
+  public Node get(int element){
+    return getNode(element).getCargoReference();
+  }
+
   public void set(Object val, int position){
-    Node currentNode = new Node(val, get(position).getReferenceToNextNode());
+    Node currentNode = new Node(val, getNode(position).getReferenceToNextNode());
     get(position-1).setReferenceToNextNode(currentNode);
   }
 
   public boolean add(Object val, int position){
-    Node currentNode = get(position);
-    Node newNode = new Node(val, currentNode.getReferenceToNextNode());
-    currentNode.setReferenceToNextNode(newNode);
+    Node prevNode = getNode(position-1);
+    Node newNode = new Node(val, prevNode.getReferenceToNextNode());
+    prevNode.setReferenceToNextNode(newNode);
     return true;
   }
 
   public void remove(int position){
-    Node prevNode = ( (position == 0) ? headReference : get(position-1));
-    Node newNode = get(position);
+    Node prevNode = getNode(position-1)
+    Node newNode = getNode(position+1);
 
     prevNode.setReferenceToNextNode(newNode);
   }
